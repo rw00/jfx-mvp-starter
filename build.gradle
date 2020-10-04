@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+}
+
+plugins.withType(JavaPlugin).configureEach {
+    java {
+        modularity.inferModulePath = true
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+ext {
+    javaVersion = '11.0.2'
+    javafxVersion = '14.0.2.1'
+}
+
+dependencies {
+    implementation "org.openjfx:javafx-base:$javafxVersion"
+    implementation "org.openjfx:javafx-controls:$javafxVersion"
+}
+
+javafx {
+    version = "$javaVersion"
+    modules = [ 'javafx.controls' ]
+}
+
+group = 'com.rw.starter'
+version = '0.1'
+sourceCompatibility = 11
+targetCompatibility = 11
+
+mainClassName = 'com.rw.starter.javafx.mvp.JfxApplication'
